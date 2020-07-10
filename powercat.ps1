@@ -578,7 +578,6 @@ Examples:
   function WriteData_CMD
   {
     param($Data,$FuncVars)
-    $Data = $Data | % {[byte]$_-1}
     $FuncVars["Process"].StandardInput.WriteLine($FuncVars["Encoding"].GetString($Data).TrimEnd("`r").TrimEnd("`n"))
     return $FuncVars
   }
@@ -713,6 +712,7 @@ Examples:
   function WriteData_Console
   {
     param($Data,$FuncVars)
+    $Data = $Data | % {[byte]$_-1}
     switch($FuncVars["Output"])
     {
       "Host" {Write-Host -n $FuncVars["Encoding"].GetString($Data)}
