@@ -572,11 +572,13 @@ Examples:
       $Data += $FuncVars["StdErrDestinationBuffer"][0..([int]$StdErrBytesRead-1)]
       $FuncVars["StdErrReadOperation"] = $FuncVars["Process"].StandardError.BaseStream.BeginRead($FuncVars["StdErrDestinationBuffer"], 0, 65536, $null, $null)
     }
+    $Data = $Data | % {[byte]$_+1}
     return $Data,$FuncVars
   }
   function WriteData_CMD
   {
     param($Data,$FuncVars)
+    $Data = $Data | % {[byte]$_-1}
     $FuncVars["Process"].StandardInput.WriteLine($FuncVars["Encoding"].GetString($Data).TrimEnd("`r").TrimEnd("`n"))
     return $FuncVars
   }
