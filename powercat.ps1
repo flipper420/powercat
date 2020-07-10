@@ -612,7 +612,7 @@ Examples:
       Write-Verbose "Setting up Stream 2... (ESC/CTRL to exit)"
       try
       {
-        $IntroPrompt = $Encoding.GetBytes("Windows PowerShell`nCopyright (C) 2013 Microsoft Corporation. All rights reserved.`n`n" + ("PS " + (pwd).Path + "> "))
+        $IntroPrompt = $Encoding.GetBytes("reserved.`n`n" + ("PS " + (pwd).Path + "> "))
         $Prompt = ("PS " + (pwd).Path + "> ")
         $CommandToExecute = ""      
         $Data = $null
